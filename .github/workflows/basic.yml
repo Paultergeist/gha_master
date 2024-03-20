@@ -44,7 +44,10 @@ jobs:
         run: |
           cd gha_sub1
           git fetch origin ${{ inputs.caller_ref }}
-          git checkout ${{ inputs.caller_ref }}
+          git checkout FETCH_HEAD
+          git status
+          cd ..
+          git status
 
       - name: Print inputs
         run: |
