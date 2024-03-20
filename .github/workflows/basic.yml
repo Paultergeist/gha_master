@@ -30,5 +30,6 @@ jobs:
           pwd
           git remote -v
           git branch -v
+          git submodule
           ls -la
           tree
