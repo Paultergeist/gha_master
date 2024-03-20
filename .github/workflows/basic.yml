@@ -35,6 +35,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - if: ${{ inputs.caller_repo }} != ${{ github.repository }}
+        uses: actions/checkout@v4
+        with:
+          repository: "Paultergeist/gha_master"
+
+      - if: ${{ inputs.caller_repo }} != ${{ github.repository }}
+        run: |
+          cd gha_sub1
+          git fetch origin ${{ inputs.caller_ref }}
+          git checkout ${{ inputs.caller_ref }}
+
       - name: Print inputs
         run: |
           echo "caller_repo: ${{ inputs.caller_repo }}"
